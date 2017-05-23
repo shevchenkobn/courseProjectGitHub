@@ -423,3 +423,9 @@
 [0511/102855:INFO:(0)] Running Awesomium 1.7.5.1
 [0511/110958:INFO:(0)] WebCore is now online.
 [0511/110958:INFO:(0)] Running Awesomium 1.7.5.1
+[0512/042329:INFO:(0)] WebCore is now online.
+[0512/042329:INFO:(0)] Running Awesomium 1.7.5.1
+[0512/042349:WARNING:Awesomium.NET(0)] System.ComponentModel.InvalidAsynchronousStateException: При вызове данного метода произошла ошибка.  Поток-получатель больше не существует.
+   в System.Windows.Forms.WindowsFormsSynchronizationContext.Send(SendOrPostCallback d, Object state)
+   в Awesomium.Core.WebCore.wvjjlbeQdqUVO5E6FXD(Object , Object , Object )
+   в Awesomium.Core.WebCore.ioXQMTP1sf()

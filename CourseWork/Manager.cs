@@ -19,7 +19,7 @@ namespace CourseWork
         public string Display { get { return FileName.Split('.')[0]; } }
         public ListViewItem GetListViewItem(string iconId = null)
         {
-            ListViewItem item = new ListViewItem();
+            var item = new ListViewItem();
             item.Text = item.ToolTipText = Display;
             item.Name = Path;
             if (iconId != null)
@@ -116,36 +116,36 @@ namespace CourseWork
 
     static class Manager
     {
-        static string getPathToProject()
+        static string GetPathToProject()
         {
                 var arr = Directory.GetCurrentDirectory().Split('\\');
                 string[] toProj = new string[arr.Length - 2];
                 Array.Copy(Directory.GetCurrentDirectory().Split('\\'), toProj, arr.Length - 2);
-                return String.Join("\\", toProj) + "\\"; // up from \bin\Debug
+                return string.Join("\\", toProj) + "\\"; // up from \bin\Debug
         }
-        public static readonly string PATH_TO_PROJECT = getPathToProject();
-        public static string PATH_TO_INPUT_FILES = PATH_TO_PROJECT + @"inputFiles\";
-        public static string PATH_TO_INVOLVED_FILES = PATH_TO_PROJECT + @"involvedFiles\";
-        public static string PATH_TO_TESTS_FILES = PATH_TO_PROJECT + @"tests\";
-        public static string PATH_TO_SYSFILES = PATH_TO_PROJECT;
-        public static string PATH_TO_INPUT_ICON = PATH_TO_SYSFILES + "icon.ico";
-        public static string PATH_TO_MAIN_ICON = PATH_TO_SYSFILES + "appIcon.ico";
-        public static string PATH_TO_BUILTIN_SCRIPT = PATH_TO_SYSFILES + "service.js";
-        public static string PATH_TO_JQUERY_SCRIPT = PATH_TO_SYSFILES + "jquery-3.2.1.min.js";
-        public static string PATH_TO_MARK_SCRIPT = PATH_TO_SYSFILES + "jquery.mark.min.js";
+        public static readonly string PathToProject = GetPathToProject();
+        public static readonly string PathToInputFiles = PathToProject + @"inputFiles\";
+        public static readonly string PathToInvolvedFiles = PathToProject + @"involvedFiles\";
+        public static readonly string PathToTestsFiles = PathToProject + @"tests\";
+        public static readonly string PathToSystemFiles = PathToProject;
+        public static readonly string PathToInputFilesIcon = PathToSystemFiles + "icon.ico";
+        public static readonly string PathToMainIcon = PathToSystemFiles + "appIcon.ico";
+        public static readonly string PathToBuiltInJScript = PathToSystemFiles + "service.js";
+        public static readonly string PathToJQueryScript = PathToSystemFiles + "jquery-3.2.1.min.js";
+        public static readonly string PathToJSMarkScript = PathToSystemFiles + "jquery.mark.min.js";
 
-        internal static string[] filePathes;
-        internal static string openedFile;
-        public static List<FileDetailed> filesWithKeyword;
+        static string[] filePathes;
+        static string openedFile;
+        public static List<FileDetailed> FilesWithKeyword;
         public static TestLines CurrentTest;
 
         public static void UpdateFiles()
         {
-            StringBuilder tmp = new StringBuilder();
-            tmp.Append("<script src=\"" + new Uri(PATH_TO_JQUERY_SCRIPT) + "\"></script>");
-            tmp.Append("<script src=\"" + new Uri(PATH_TO_MARK_SCRIPT) + "\"></script>");
-            string jsFunc = tmp.Append("<script src=\"" + new Uri(PATH_TO_BUILTIN_SCRIPT) + "\"></script>").ToString();
-            string[] inputFiles = Directory.GetFiles(PATH_TO_INPUT_FILES);
+            var tmp = new StringBuilder();
+            tmp.Append("<script src=\"" + new Uri(PathToJQueryScript) + "\"></script>");
+            tmp.Append("<script src=\"" + new Uri(PathToJSMarkScript) + "\"></script>");
+            string jsFunc = tmp.Append("<script src=\"" + new Uri(PathToBuiltInJScript) + "\"></script>").ToString();
+            string[] inputFiles = Directory.GetFiles(PathToInputFiles);
 
             Program.MainWindow.Files.LargeImageList = CreateListIcon(192);
             filePathes = new string[inputFiles.Length];
@@ -154,8 +154,8 @@ namespace CourseWork
                 if (inputFiles[i].Split('.').Last() == "html")
                 {
                     bool wrote = false;
-                    FileDetailed curr = new FileDetailed(inputFiles[i]);
-                    string pathToInvolvedFile = PATH_TO_INVOLVED_FILES + curr.FileName;
+                    var curr = new FileDetailed(inputFiles[i]);
+                    string pathToInvolvedFile = PathToInvolvedFiles + curr.FileName;
                     filePathes[i] = pathToInvolvedFile;
                     if (!File.Exists(pathToInvolvedFile))
                         using (StreamReader reader = new StreamReader(inputFiles[i]))
@@ -167,7 +167,7 @@ namespace CourseWork
                                 if (!wrote && line.IndexOf("</head>") != -1)
                                 {
                                     string[] linePieces = line.Split(new string[] { "</head>" }, 2, StringSplitOptions.None);
-                                    StringBuilder nLine = new StringBuilder();
+                                    var nLine = new StringBuilder();
                                     nLine.Append(linePieces[0]);
                                     nLine.Append(jsFunc + "</head>");
                                     if (linePieces.Length == 2)
@@ -179,7 +179,7 @@ namespace CourseWork
                             }
                         }
 
-                    ListViewItem item = new ListViewItem();
+                    var item = new ListViewItem();
                     item.Text = item.ToolTipText = curr.Display;
                     item.Name = pathToInvolvedFile;
                     item.ImageKey = "icon";
@@ -190,42 +190,41 @@ namespace CourseWork
 
         public static ImageList CreateListIcon(int size)
         {
-            ImageList icon = new ImageList();
+            var icon = new ImageList();
             icon.ImageSize = new Size(size, size);
             icon.ColorDepth = ColorDepth.Depth32Bit;
-            icon.Images.Add("icon", Bitmap.FromFile(PATH_TO_INPUT_ICON));
+            icon.Images.Add("icon", Bitmap.FromFile(PathToInputFilesIcon));
             return icon;
         }
 
         internal static void PrepareFoundList()
         {
             MainWindow.SuitableFiles.View = View.List;
-            MainWindow.SuitableFiles.ItemSelectionChanged += Files_ItemSelectionChanged;
+            MainWindow.SuitableFiles.ItemSelectionChanged += ChangeOpenedFile;
             ImageList filesWithKeywordIcon = new ImageList();
             filesWithKeywordIcon.ImageSize = new Size(64, 64);
             filesWithKeywordIcon.ColorDepth = ColorDepth.Depth32Bit;
-            filesWithKeywordIcon.Images.Add("icon", Image.FromFile(PATH_TO_INPUT_ICON));
+            filesWithKeywordIcon.Images.Add("icon", Image.FromFile(PathToInputFilesIcon));
             MainWindow.SuitableFiles.SmallImageList = filesWithKeywordIcon;
         }
 
         static bool isTextHightlighted = true;
-        internal static void Files_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
+        internal static void ChangeOpenedFile(object sender, ListViewItemSelectionChangedEventArgs e)
         {
-            ListView files = (System.Windows.Forms.ListView)sender;
-            //Program.MainWindow.MainOutput.Source = new Uri(files.Items[e.ItemIndex].Name);
+            var files = (System.Windows.Forms.ListView)sender;
             OpenFile(files.Items[e.ItemIndex]);
             if (files.Name == "SuitableFiles")
             {
-                Program.MainWindow.MainOutput.DocumentReady += highlightText;
+                Program.MainWindow.MainOutput.DocumentReady += HighlightText;
                 isTextHightlighted = false;
             }
             openedFile = files.Items[e.ItemIndex].Name;
         }
-        static void highlightText(object sender, DocumentReadyEventArgs e)
+        static void HighlightText(object sender, DocumentReadyEventArgs e)
         {
             if (!isTextHightlighted)
             {
-                JSValue[] param = new JSValue[2];
+                var param = new JSValue[2];
                 param[0] = new JSValue(MainWindow.KeywordNotification.Text);
                 param[1] = new JSValue(true);
                 JSObject window = MainWindow.MainOutput.ExecuteJavascriptWithResult("window");
@@ -244,31 +243,31 @@ namespace CourseWork
 
         public static void SearchAndDisplay(string key)
         {
-            searchFiles(key);
+            SearchInFiles(key);
             MainWindow.KeywordNotification.ForeColor = System.Drawing.SystemColors.WindowText;
             MainWindow.KeywordNotification.Text = key;
             MainWindow.SuitableFiles.Clear();
-            for (int i = 0; i < filesWithKeyword.Count; i++)
-                MainWindow.SuitableFiles.Items.Add(filesWithKeyword[i].GetListViewItem("icon"));
+            for (int i = 0; i < FilesWithKeyword.Count; i++)
+                MainWindow.SuitableFiles.Items.Add(FilesWithKeyword[i].GetListViewItem("icon"));
         }
 
         public static void PrepareTests()
         {
             Program.Tests.ChooseTestListView.Items.Clear();
-            string[] testsFiles = Directory.GetFiles(PATH_TO_TESTS_FILES);
+            string[] testsFiles = Directory.GetFiles(PathToTestsFiles);
             foreach (var fileName in testsFiles)
             {
-                FileDetailed curr = new FileDetailed(fileName);
-                ListViewItem item = new ListViewItem();
+                var curr = new FileDetailed(fileName);
+                var item = new ListViewItem();
                 item.Text = item.ToolTipText = curr.Display;
                 item.Name = curr.Path;
                 Program.Tests.ChooseTestListView.Items.Add(item);
             }
         }
 
-        private static void searchFiles(string key)
+        static void SearchInFiles(string key)
         {
-            List<string> goodFiles = new List<string>(filePathes.Length);
+            var goodFiles = new List<string>(filePathes.Length);
             for (int i = 0; i < filePathes.Length; i++)
                 using (StreamReader reader = new StreamReader(filePathes[i]))
                 {
@@ -280,12 +279,12 @@ namespace CourseWork
                             break;
                         }
                 }
-            filesWithKeyword = new List<FileDetailed>();
+            FilesWithKeyword = new List<FileDetailed>();
             for (int i = 0; i < goodFiles.Count; i++)
-                filesWithKeyword.Add(new FileDetailed(goodFiles[i]));
+                FilesWithKeyword.Add(new FileDetailed(goodFiles[i]));
         }
 
-        internal static void proceedJSMessage(object sender, JavascriptMessageEventArgs e)
+        internal static void ProceedJSMessage(JavascriptMessageEventArgs e)
         {
             string msg = e.Message;
             if (msg == "textIsClicked")
@@ -295,12 +294,12 @@ namespace CourseWork
             }
         }
 
-        internal static void Reset_Click(object sender, EventArgs e)
+        internal static void ClearQueryTextBox(object sender)
         {
             var button = (Button)sender;
             MainWindow.KeywordNotification.ForeColor = System.Drawing.SystemColors.MenuHighlight;
             MainWindow.KeywordNotification.Text = MainWindow.KeyWordNotificationDefault;
-            filesWithKeyword = null;
+            FilesWithKeyword = null;
             MainWindow.SuitableFiles.Items.Clear();
             JSValue[] param = new JSValue[0];
             JSObject window = MainWindow.MainOutput.ExecuteJavascriptWithResult("window");

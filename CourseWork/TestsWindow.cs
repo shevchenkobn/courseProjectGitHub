@@ -17,7 +17,7 @@ namespace CourseWork
     {
         public TestsWindow()
         {
-            this.Icon = new Icon(PATH_TO_MAIN_ICON);
+            this.Icon = new Icon(PathToMainIcon);
             InitializeComponent();
             TestingPanel.Visible = false;
         }

@@ -31,13 +31,23 @@ namespace CourseWork
             MainWindow = new Form1();
             Tests = new TestsWindow();
             UpdateFiles();
-            
-            MainWindow.Files.ItemSelectionChanged += Files_ItemSelectionChanged;
+
+            MainWindow.Files.ItemSelectionChanged += Files_ItemSelectionChanged; ;
             OpenFile(MainWindow.Files.Items[0]);
 
             PrepareFoundList();
-            MainWindow.ResetQuery.Click += Reset_Click;
+            MainWindow.ResetQuery.Click += ResetQuery_Click; ;
             Application.Run(MainWindow);
+        }
+
+        private static void ResetQuery_Click(object sender, EventArgs e)
+        {
+            ClearQueryTextBox(sender);
+        }
+
+        private static void Files_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
+        {
+            ChangeOpenedFile(sender, e);
         }
     }
 }
