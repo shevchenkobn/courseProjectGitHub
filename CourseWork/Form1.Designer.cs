@@ -86,7 +86,7 @@ namespace CourseWork
             this.Files.Margin = new System.Windows.Forms.Padding(24);
             this.Files.Name = "Files";
             this.Files.Size = new System.Drawing.Size(144, 596);
-            this.Files.TabIndex = 0;
+            this.Files.TabIndex = 2;
             this.Files.UseCompatibleStateImageBehavior = false;
             // 
             // horSplitContainer
@@ -117,14 +117,14 @@ namespace CourseWork
             this.horSplitContainer.Panel2MinSize = 135;
             this.horSplitContainer.Size = new System.Drawing.Size(648, 600);
             this.horSplitContainer.SplitterDistance = 430;
-            this.horSplitContainer.TabIndex = 3;
+            this.horSplitContainer.TabIndex = 4;
             // 
             // MainOutput
             // 
             this.MainOutput.Dock = System.Windows.Forms.DockStyle.Fill;
             this.MainOutput.Location = new System.Drawing.Point(0, 0);
             this.MainOutput.Size = new System.Drawing.Size(644, 426);
-            this.MainOutput.TabIndex = 2;
+            this.MainOutput.TabIndex = 3;
             // 
             // OpenTestWindow
             // 
@@ -212,7 +212,6 @@ namespace CourseWork
             this.keywordNotificationLabel.Location = new System.Drawing.Point(22, 41);
             this.keywordNotificationLabel.Name = "KeywordNotificationLabel";
             this.keywordNotificationLabel.Size = new System.Drawing.Size(47, 13);
-            this.keywordNotificationLabel.TabIndex = 4;
             this.keywordNotificationLabel.Text = "Запрос:";
             // 
             // SuitableFiles
