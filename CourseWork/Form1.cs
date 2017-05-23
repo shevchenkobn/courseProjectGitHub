@@ -19,22 +19,6 @@ namespace CourseWork
     {
         public string KeyWordNotificationDefault = "К сожалению, мы ничего не ищем..";
 
-        public Form1()
-        {
-            WindowState = FormWindowState.Maximized;
-            this.Icon = new Icon(PathToMainIcon);
-            InitializeComponent();
-            MinimumSize = new Size(800, 600);
-
-            this.MainOutput.JavascriptMessage += MainOutput_JavascriptMessage;
-            this.zoomTextBox.Text = "100%";
-            this.zoomTextBox.KeyPress += ZoomTextBox_OnChange;
-            ZoomTrackBar.Value = 100;
-            this.ZoomTrackBar.ValueChanged += ZoomTrackBar_ValueChanged;
-            KeywordNotification.KeyPress += KeywordNotification_KeyPress;
-            KeywordNotification.LostFocus += KeywordNotification_LostFocus;
-        }
-
         private void MainOutput_JavascriptMessage(object sender, JavascriptMessageEventArgs e)
         {
             ProceedJSMessage(e);
@@ -99,6 +83,22 @@ namespace CourseWork
         private void OpenTestWindow_Click(object sender, EventArgs e)
         {
             Program.Tests.ShowDialog(this);
+        }
+
+        public Form1()
+        {
+            WindowState = FormWindowState.Maximized;
+            this.Icon = new Icon(PathToMainIcon);
+            InitializeComponent();
+            MinimumSize = new Size(800, 600);
+
+            this.MainOutput.JavascriptMessage += MainOutput_JavascriptMessage;
+            this.zoomTextBox.Text = "100%";
+            this.zoomTextBox.KeyPress += ZoomTextBox_OnChange;
+            ZoomTrackBar.Value = 100;
+            this.ZoomTrackBar.ValueChanged += ZoomTrackBar_ValueChanged;
+            KeywordNotification.KeyPress += KeywordNotification_KeyPress;
+            KeywordNotification.LostFocus += KeywordNotification_LostFocus;
         }
     }
 }

@@ -15,13 +15,6 @@ namespace CourseWork
 {
     public partial class TestsWindow : Form
     {
-        public TestsWindow()
-        {
-            this.Icon = new Icon(PathToMainIcon);
-            InitializeComponent();
-            TestingPanel.Visible = false;
-        }
-
         private void TestsWindow_Load(object sender, EventArgs e)
         {
             PrepareTests();
@@ -44,7 +37,7 @@ namespace CourseWork
             if (indexOfQuestion < CurrentTest.Count)
             {
                 if (testGroupBox.Controls.OfType<RadioButton>().Count()
-                  != CurrentTest[0, TestLines.IndexerParams.VariantsNumber])
+                  != CurrentTest[0, TestQuestions.IndexerParams.VariantsNumber])
                     throw new ArgumentException("Not enough variants to proceed");
                 testGroupBox.Text = "Вопрос " + (indexOfQuestion + 1).ToString() + " из " + CurrentTest.Count + ".";
                 TestQuestion.Text = CurrentTest[indexOfQuestion];
@@ -79,6 +72,13 @@ namespace CourseWork
                 checkedButton.Checked = false;
                 UpdateTest(CurrentTest.CurrentTask + 1);
             }
+        }
+
+        public TestsWindow()
+        {
+            this.Icon = new Icon(PathToMainIcon);
+            InitializeComponent();
+            TestingPanel.Visible = false;
         }
     }
 }

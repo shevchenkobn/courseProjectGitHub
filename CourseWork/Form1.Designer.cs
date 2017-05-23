@@ -36,14 +36,14 @@ namespace CourseWork
             this.Files = new System.Windows.Forms.ListView();
             this.horSplitContainer = new System.Windows.Forms.SplitContainer();
             this.MainOutput = new Awesomium.Windows.Forms.WebControl(this.components);
-            this.OpenTestWindow = new System.Windows.Forms.Button();
+            this.openTestsWindow = new System.Windows.Forms.Button();
             this.zoomTextBox = new System.Windows.Forms.TextBox();
             this.KeywordNotification = new System.Windows.Forms.TextBox();
-            this.ResetZoomBtn = new System.Windows.Forms.Button();
+            this.resetZoomButton = new System.Windows.Forms.Button();
             this.CurrentFileName = new System.Windows.Forms.TextBox();
-            this.CurrentFileLabel = new System.Windows.Forms.Label();
+            this.currentFilesLabel = new System.Windows.Forms.Label();
             this.ResetQuery = new System.Windows.Forms.Button();
-            this.KeywordNotificationLabel = new System.Windows.Forms.Label();
+            this.keywordNotificationLabel = new System.Windows.Forms.Label();
             this.SuitableFiles = new System.Windows.Forms.ListView();
             this.ZoomTrackBar = new System.Windows.Forms.TrackBar();
             ((System.ComponentModel.ISupportInitialize)(this.vertSplitContainer)).BeginInit();
@@ -104,14 +104,14 @@ namespace CourseWork
             // 
             // horSplitContainer.Panel2
             // 
-            this.horSplitContainer.Panel2.Controls.Add(this.OpenTestWindow);
+            this.horSplitContainer.Panel2.Controls.Add(this.openTestsWindow);
             this.horSplitContainer.Panel2.Controls.Add(this.zoomTextBox);
             this.horSplitContainer.Panel2.Controls.Add(this.KeywordNotification);
-            this.horSplitContainer.Panel2.Controls.Add(this.ResetZoomBtn);
+            this.horSplitContainer.Panel2.Controls.Add(this.resetZoomButton);
             this.horSplitContainer.Panel2.Controls.Add(this.CurrentFileName);
-            this.horSplitContainer.Panel2.Controls.Add(this.CurrentFileLabel);
+            this.horSplitContainer.Panel2.Controls.Add(this.currentFilesLabel);
             this.horSplitContainer.Panel2.Controls.Add(this.ResetQuery);
-            this.horSplitContainer.Panel2.Controls.Add(this.KeywordNotificationLabel);
+            this.horSplitContainer.Panel2.Controls.Add(this.keywordNotificationLabel);
             this.horSplitContainer.Panel2.Controls.Add(this.SuitableFiles);
             this.horSplitContainer.Panel2.Controls.Add(this.ZoomTrackBar);
             this.horSplitContainer.Panel2MinSize = 135;
@@ -128,17 +128,17 @@ namespace CourseWork
             // 
             // OpenTestWindow
             // 
-            this.OpenTestWindow.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.openTestsWindow.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.OpenTestWindow.Location = new System.Drawing.Point(537, 36);
-            this.OpenTestWindow.MaximumSize = new System.Drawing.Size(103, 23);
-            this.OpenTestWindow.MinimumSize = new System.Drawing.Size(103, 23);
-            this.OpenTestWindow.Name = "OpenTestWindow";
-            this.OpenTestWindow.Size = new System.Drawing.Size(103, 23);
-            this.OpenTestWindow.TabIndex = 14;
-            this.OpenTestWindow.Text = "Открыть тесты";
-            this.OpenTestWindow.UseVisualStyleBackColor = true;
-            this.OpenTestWindow.Click += new System.EventHandler(this.OpenTestWindow_Click);
+            this.openTestsWindow.Location = new System.Drawing.Point(537, 36);
+            this.openTestsWindow.MaximumSize = new System.Drawing.Size(103, 23);
+            this.openTestsWindow.MinimumSize = new System.Drawing.Size(103, 23);
+            this.openTestsWindow.Name = "OpenTestWindow";
+            this.openTestsWindow.Size = new System.Drawing.Size(103, 23);
+            this.openTestsWindow.TabIndex = 14;
+            this.openTestsWindow.Text = "Открыть тесты";
+            this.openTestsWindow.UseVisualStyleBackColor = true;
+            this.openTestsWindow.Click += new System.EventHandler(this.OpenTestWindow_Click);
             // 
             // zoomTextBox
             // 
@@ -161,17 +161,17 @@ namespace CourseWork
             // 
             // ResetZoomBtn
             // 
-            this.ResetZoomBtn.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.resetZoomButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.ResetZoomBtn.Location = new System.Drawing.Point(325, 8);
-            this.ResetZoomBtn.MaximumSize = new System.Drawing.Size(97, 23);
-            this.ResetZoomBtn.MinimumSize = new System.Drawing.Size(97, 23);
-            this.ResetZoomBtn.Name = "ResetZoomBtn";
-            this.ResetZoomBtn.Size = new System.Drawing.Size(97, 23);
-            this.ResetZoomBtn.TabIndex = 12;
-            this.ResetZoomBtn.Text = "Масштаб 100%";
-            this.ResetZoomBtn.UseVisualStyleBackColor = true;
-            this.ResetZoomBtn.Click += new System.EventHandler(this.ResetZoomBtn_Click);
+            this.resetZoomButton.Location = new System.Drawing.Point(325, 8);
+            this.resetZoomButton.MaximumSize = new System.Drawing.Size(97, 23);
+            this.resetZoomButton.MinimumSize = new System.Drawing.Size(97, 23);
+            this.resetZoomButton.Name = "ResetZoomBtn";
+            this.resetZoomButton.Size = new System.Drawing.Size(97, 23);
+            this.resetZoomButton.TabIndex = 12;
+            this.resetZoomButton.Text = "Масштаб 100%";
+            this.resetZoomButton.UseVisualStyleBackColor = true;
+            this.resetZoomButton.Click += new System.EventHandler(this.ResetZoomBtn_Click);
             // 
             // CurrentFileName
             // 
@@ -186,12 +186,12 @@ namespace CourseWork
             // 
             // CurrentFileLabel
             // 
-            this.CurrentFileLabel.AutoSize = true;
-            this.CurrentFileLabel.Location = new System.Drawing.Point(2, 14);
-            this.CurrentFileLabel.Name = "CurrentFileLabel";
-            this.CurrentFileLabel.Size = new System.Drawing.Size(84, 13);
-            this.CurrentFileLabel.TabIndex = 8;
-            this.CurrentFileLabel.Text = "Текущий файл:";
+            this.currentFilesLabel.AutoSize = true;
+            this.currentFilesLabel.Location = new System.Drawing.Point(2, 14);
+            this.currentFilesLabel.Name = "CurrentFileLabel";
+            this.currentFilesLabel.Size = new System.Drawing.Size(84, 13);
+            this.currentFilesLabel.TabIndex = 8;
+            this.currentFilesLabel.Text = "Текущий файл:";
             // 
             // ResetQuery
             // 
@@ -208,12 +208,12 @@ namespace CourseWork
             // 
             // KeywordNotificationLabel
             // 
-            this.KeywordNotificationLabel.AutoSize = true;
-            this.KeywordNotificationLabel.Location = new System.Drawing.Point(22, 41);
-            this.KeywordNotificationLabel.Name = "KeywordNotificationLabel";
-            this.KeywordNotificationLabel.Size = new System.Drawing.Size(47, 13);
-            this.KeywordNotificationLabel.TabIndex = 4;
-            this.KeywordNotificationLabel.Text = "Запрос:";
+            this.keywordNotificationLabel.AutoSize = true;
+            this.keywordNotificationLabel.Location = new System.Drawing.Point(22, 41);
+            this.keywordNotificationLabel.Name = "KeywordNotificationLabel";
+            this.keywordNotificationLabel.Size = new System.Drawing.Size(47, 13);
+            this.keywordNotificationLabel.TabIndex = 4;
+            this.keywordNotificationLabel.Text = "Запрос:";
             // 
             // SuitableFiles
             // 
@@ -269,15 +269,15 @@ namespace CourseWork
         public System.Windows.Forms.ListView Files;
         public Awesomium.Windows.Forms.WebControl MainOutput;
         public System.Windows.Forms.ListView SuitableFiles;
-        private System.Windows.Forms.Label KeywordNotificationLabel;
+        private System.Windows.Forms.Label keywordNotificationLabel;
         public System.Windows.Forms.TextBox KeywordNotification;
         public System.Windows.Forms.Button ResetQuery;
         public System.Windows.Forms.TextBox CurrentFileName;
-        private System.Windows.Forms.Label CurrentFileLabel;
-        private System.Windows.Forms.Button ResetZoomBtn;
+        private System.Windows.Forms.Label currentFilesLabel;
+        private System.Windows.Forms.Button resetZoomButton;
         public System.Windows.Forms.TrackBar ZoomTrackBar;
         private System.Windows.Forms.TextBox zoomTextBox;
-        private System.Windows.Forms.Button OpenTestWindow;
+        private System.Windows.Forms.Button openTestsWindow;
     }
 }
 
