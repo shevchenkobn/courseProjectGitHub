@@ -60,17 +60,18 @@ namespace CourseWork
             if (variantNumber == rightVariants[CurrentTask])
                 Result++;
         }
-        public TestQuestions(string[] testInFileNotation)
+        public TestQuestions(string textInFileNotation)
         {
-            if (testInFileNotation.Length == 0)
+            string[] questionsFromFile = textInFileNotation.Split(new string[] { "$$$" }, StringSplitOptions.None);
+            if (questionsFromFile.Length == 0)
                 throw new ArgumentException("В тесте нет вопросов");
             CurrentTask = 0;
-            variants = new string[testInFileNotation.Length][];
-            rightVariants = new int[testInFileNotation.Length];
-            taskNames = new string[testInFileNotation.Length];
-            for (int i = 0; i < testInFileNotation.Length; i++)
+            variants = new string[questionsFromFile.Length][];
+            rightVariants = Enumerable.Repeat(-1, questionsFromFile.Length).ToArray();
+            taskNames = new string[questionsFromFile.Length];
+            for (int i = 0; i < questionsFromFile.Length; i++)
             {
-                string[] temp = testInFileNotation[i].Split(new string[] { ":::" }, StringSplitOptions.None);
+                string[] temp = questionsFromFile[i].Split(new string[] { ":::" }, StringSplitOptions.None);
                 taskNames[i] = temp[0];
                 variants[i] = temp[1].Split(new string[] { ";;;" }, StringSplitOptions.None);
                 for (int j = 0; j < variants[i].Length; j++)

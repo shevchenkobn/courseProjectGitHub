@@ -34,23 +34,32 @@ namespace CourseWork
 
         private void UpdateTest(int indexOfQuestion)
         {
-            if (indexOfQuestion < CurrentTest.Count)
+            try
             {
-                if (testGroupBox.Controls.OfType<RadioButton>().Count()
-                  != CurrentTest[0, TestQuestions.IndexerParams.VariantsNumber])
-                    throw new ArgumentException("Not enough variants to proceed");
-                testGroupBox.Text = "Вопрос " + (indexOfQuestion + 1).ToString() + " из " + CurrentTest.Count + ".";
-                TestQuestion.Text = CurrentTest[indexOfQuestion];
-                for (int i = 0; i < 4; i++)
+                if (indexOfQuestion < CurrentTest.Count)
                 {
-                    RadioButton c = testGroupBox.Controls["Variant" + i] as RadioButton;
+                    if (testGroupBox.Controls.OfType<RadioButton>().Count()
+                      != CurrentTest[indexOfQuestion, TestQuestions.IndexerParams.VariantsNumber])
+                        throw new ArgumentException("Недостаточно вариантов ответа для продолжения");
+                    testGroupBox.Text = "Вопрос " + (indexOfQuestion + 1).ToString() + " из " + CurrentTest.Count + ".";
+                    TestQuestion.Text = CurrentTest[indexOfQuestion];
+                    for (int i = 0; i < 4; i++)
+                    {
+                        RadioButton c = testGroupBox.Controls["Variant" + i] as RadioButton;
 
-                    c.Text = Convert.ToChar(0x410 + i) + ": " + CurrentTest[indexOfQuestion, i];
+                        c.Text = Convert.ToChar(0x410 + i) + ": " + CurrentTest[indexOfQuestion, i];
+                    }
+                }
+                else
+                {
+                    MessageBox.Show(this, "Твой результат " + CurrentTest.Result + " из " + CurrentTest.Count + " баллов.");
+                    ReturnToTestSelection();
                 }
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show(this, "Твой результат " + CurrentTest.Result + " из " + CurrentTest.Count + "баллов.");
+                string message = "Возникла ошибка:\r\n" + ex.Message;
+                MessageBox.Show(this, message);
                 ReturnToTestSelection();
             }
         }
@@ -70,8 +79,10 @@ namespace CourseWork
                 int buttonIndex = Convert.ToInt32(Regex.Match(checkedButton.Name, "[0-9]+").Value);
                 CurrentTest.MarkAsDone(buttonIndex);
                 checkedButton.Checked = false;
-                UpdateTest(CurrentTest.CurrentTask + 1);
             }
+            else
+                CurrentTest.MarkAsDone(-1);
+            UpdateTest(CurrentTest.CurrentTask + 1);
         }
 
         public TestsWindow()

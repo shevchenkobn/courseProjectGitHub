@@ -147,6 +147,8 @@ namespace CourseWork
             MainWindow.SuitableFiles.Clear();
             for (int i = 0; i < FilesWithKeyword.Count; i++)
                 MainWindow.SuitableFiles.Items.Add(FilesWithKeyword[i].GetListViewItem("icon"));
+            isTextHightlighted = false;
+            HighlightText(null, null);
         }
 
         public static void PrepareTests()
@@ -208,7 +210,7 @@ namespace CourseWork
         {
             try
             {
-                CurrentTest = new TestQuestions(File.ReadAllLines(fileName));
+                CurrentTest = new TestQuestions(File.ReadAllText(fileName));
                 Tests.DisplayCurrentTest();
             }
             catch (Exception e)

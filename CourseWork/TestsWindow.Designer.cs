@@ -68,7 +68,7 @@
             this.StartTest.Name = "StartTest";
             this.StartTest.Size = new System.Drawing.Size(309, 23);
             this.StartTest.TabIndex = 1;
-            this.StartTest.Text = "Ночать тест";
+            this.StartTest.Text = "Начать тест";
             this.StartTest.UseVisualStyleBackColor = true;
             this.StartTest.Click += new System.EventHandler(this.StartTest_Click);
             // 
