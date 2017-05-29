@@ -214,9 +214,9 @@ namespace CourseWork
             catch (Exception e)
             {
                 Tests.ReturnToTestSelection();
-                string msg = "An error occured:\r\n" +
-                    e.GetType() + ": " + e.Message + "\r\n" +
-                    "Please, choose another option.";
+                string msg = "Произошла ошибка:\r\n" +
+                    e.Message + "\r\n" +
+                    "Пожалуйста, попробуйте еще раз.";
                 MessageBox.Show(Tests, msg);
             }
         }

@@ -63,7 +63,7 @@ namespace CourseWork
         public TestQuestions(string[] testInFileNotation)
         {
             if (testInFileNotation.Length == 0)
-                throw new ArgumentException("No questions for test");
+                throw new ArgumentException("В тесте нет вопросов");
             CurrentTask = 0;
             variants = new string[testInFileNotation.Length][];
             rightVariants = new int[testInFileNotation.Length];
