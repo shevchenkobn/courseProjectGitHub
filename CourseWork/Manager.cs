@@ -148,7 +148,6 @@ namespace CourseWork
             for (int i = 0; i < FilesWithKeyword.Count; i++)
                 MainWindow.SuitableFiles.Items.Add(FilesWithKeyword[i].GetListViewItem("icon"));
             isTextHightlighted = false;
-            HighlightText(null, null);
         }
 
         public static void PrepareTests()
