@@ -63,7 +63,7 @@ namespace CourseWork
         public TestQuestions(string textInFileNotation)
         {
             string[] questionsFromFile = textInFileNotation.Split(new string[] { "$$$" }, StringSplitOptions.None);
-            if (questionsFromFile.Length == 0)
+            if (questionsFromFile.Length == 1 && questionsFromFile[0] == "")
                 throw new ArgumentException("В тесте нет вопросов");
             CurrentTask = 0;
             variants = new string[questionsFromFile.Length][];

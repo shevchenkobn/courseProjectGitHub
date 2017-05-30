@@ -469,3 +469,13 @@
 [0529/150240:INFO:(0)] Running Awesomium 1.7.5.1
 [0529/150341:INFO:(0)] WebCore is now online.
 [0529/150341:INFO:(0)] Running Awesomium 1.7.5.1
+[0529/151336:INFO:(0)] WebCore is now online.
+[0529/151336:INFO:(0)] Running Awesomium 1.7.5.1
+[0529/153058:INFO:SkGlyphCache.cpp(645)] purging 5148K from font cache [98 entries]
+
+[0529/153100:INFO:SkGlyphCache.cpp(645)] purging 5116K from font cache [97 entries]
+
+[0529/153918:INFO:SkGlyphCache.cpp(645)] purging 5145K from font cache [98 entries]
+
+[0530/040758:INFO:(0)] WebCore is now online.
+[0530/040758:INFO:(0)] Running Awesomium 1.7.5.1

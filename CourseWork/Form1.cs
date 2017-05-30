@@ -82,7 +82,8 @@ namespace CourseWork
 
         private void OpenTestWindow_Click(object sender, EventArgs e)
         {
-            Program.Tests.ShowDialog(this);
+            
+Program.Tests.ShowDialog(this);
         }
 
         public Form1()
