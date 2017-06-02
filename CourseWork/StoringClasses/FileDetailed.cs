@@ -12,6 +12,7 @@ namespace CourseWork
         public string Path { get; set; }
         public string FileName { get { return Path.Split(new char[] { '\\', '\\' }).Last(); } }
         public string Display { get { return FileName.Split('.')[0]; } }
+
         public ListViewItem GetListViewItem(string iconId = null)
         {
             var item = new ListViewItem();
@@ -21,6 +22,7 @@ namespace CourseWork
                 item.ImageKey = iconId;
             return item;
         }
+
         public override string ToString()
         {
             return Display;

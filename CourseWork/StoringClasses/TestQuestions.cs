@@ -60,6 +60,7 @@ namespace CourseWork
             if (variantNumber == rightVariants[CurrentTask])
                 Result++;
         }
+
         public TestQuestions(string textInFileNotation)
         {
             string[] questionsFromFile = textInFileNotation.Split(new string[] { "$$$" }, StringSplitOptions.None);

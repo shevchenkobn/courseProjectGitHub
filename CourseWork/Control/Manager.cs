@@ -9,6 +9,7 @@ using System.Drawing;
 using Awesomium.Core;
 
 using static CourseWork.Program;
+using System.Globalization;
 
 namespace CourseWork
 {
@@ -170,8 +171,9 @@ namespace CourseWork
                 using (StreamReader reader = new StreamReader(filePathes[i]))
                 {
                     string line;
+                    CultureInfo culture = new CultureInfo(0x0422); // initialize with Ukrainian language
                     while ((line = reader.ReadLine()) != null)
-                        if (line.Contains(key))
+                        if (culture.CompareInfo.IndexOf(line, key, CompareOptions.IgnoreCase) >= 0)
                         {
                             goodFiles.Add(filePathes[i]);
                             break;

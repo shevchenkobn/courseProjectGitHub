@@ -491,3 +491,12 @@
    в System.Windows.Forms.WindowsFormsSynchronizationContext.Send(SendOrPostCallback d, Object state)
    в Awesomium.Core.WebCore.wvjjlbeQdqUVO5E6FXD(Object , Object , Object )
    в Awesomium.Core.WebCore.ioXQMTP1sf()
+[0602/094320:INFO:(0)] WebCore is now online.
+[0602/094320:INFO:(0)] Running Awesomium 1.7.5.1
+[0602/095455:INFO:(0)] WebCore is now online.
+[0602/095455:INFO:(0)] Running Awesomium 1.7.5.1
+[0602/105233:INFO:(0)] WebCore is now online.
+[0602/105233:INFO:(0)] Running Awesomium 1.7.5.1
+[0602/105239:WARNING:Awesomium.NET(0)] System.TimeoutException: The operation has timed out. The child process or the I/O thread, are busy. Please try to create the object again.
+   в Awesomium.Windows.Forms.WebControl.CreateGlobalJavascriptObject(String name)
+   в Awesomium.Core.JavascriptHelper.Register()
